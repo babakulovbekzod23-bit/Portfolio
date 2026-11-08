@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ilmiy maqola yozish, Scopus va Web of Science jurnal tanlash bo'yicha o'zbek tilidagi kurs va vositalar.">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ilmiy Yo'l</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap">
+<style>
+/* Layout: one column route map of the research workflow (idea to submission),
+   framed by a hero with a Q1-Q4 scale and followed by course, working tools and AI guidance.
+   Palette: Samarkand lapis blue with a turquoise secondary, on a blue-tinted paper neutral. */
+:root {
+  --bg: #F3F6F9;
+  --surface: #FFFFFF;
+  --ink: #13202C;
+  --muted: #56687A;
+  --line: #D5DEE6;
+  --accent: #0F5AA6;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E2EEF9;
+  --teal: #0A7A78;
+  --warn: #A8481A;
+  --warn-soft: #FBEBDD;
+  --q1: #0F5AA6; --q1t: #FFFFFF;
+  --q2: #3A76B0; --q2t: #FFFFFF;
+  --q3: #93B7DA; --q3t: #13202C;
+  --q4: #C9DAEA; --q4t: #13202C;
+  --font-display: "Literata", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C151E;
+    --surface: #132130;
+    --ink: #E7EEF4;
+    --muted: #9AABBB;
+    --line: #25394B;
+    --accent: #5DA9EE;
+    --accent-ink: #08121C;
+    --accent-soft: #16304A;
+    --teal: #38C0BC;
+    --warn: #F0A070;
+    --warn-soft: #3A2416;
+    --q1: #5DA9EE; --q1t: #08121C;
+    --q2: #3F82C3; --q2t: #08121C;
+    --q3: #2B5E92; --q3t: #E7EEF4;
+    --q4: #1F4468; --q4t: #E7EEF4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C151E;
+  --surface: #132130;
+  --ink: #E7EEF4;
+  --muted: #9AABBB;
+  --line: #25394B;
+  --accent: #5DA9EE;
+  --accent-ink: #08121C;
+  --accent-soft: #16304A;
+  --teal: #38C0BC;
+  --warn: #F0A070;
+  --warn-soft: #3A2416;
+  --q1: #5DA9EE; --q1t: #08121C;
+  --q2: #3F82C3; --q2t: #08121C;
+  --q3: #2B5E92; --q3t: #E7EEF4;
+  --q4: #1F4468; --q4t: #E7EEF4;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 0 24px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.5rem, 3.6vw, 2.05rem); font-weight: 600; line-height: 1.2; }
+h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; }
+p { margin: 0; }
+.mono-label { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 10px 18px; border-radius: 8px;
+  font: 600 1rem/1.2 var(--font-body); text-decoration: none; cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm { min-height: 40px; padding: 8px 14px; font-size: .92rem; }
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 28px; height: 28px; color: var(--accent); flex: none; }
+.nav { display: none; gap: 24px; }
+.nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.nav a:hover { color: var(--ink); }
+@media (min-width: 760px) { .nav { display: flex; } }
+
+/* Hero */
+.hero { display: grid; gap: 32px; padding-block: 36px 56px; }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 56px; padding-block: 64px 72px; }
+}
+.eyebrow { color: var(--teal); margin-bottom: 12px; }
+.hero h1 { font-size: clamp(2rem, 5.6vw, 3.3rem); font-weight: 700; line-height: 1.12; letter-spacing: -.01em; margin-bottom: 16px; }
+.lead { font-size: 1.12rem; color: var(--muted); max-width: 56ch; margin-bottom: 24px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.scale { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
+.scale h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+.scale .sub { color: var(--muted); font-size: .92rem; }
+.qbar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-block: 16px 8px; }
+.qbar span { height: 48px; border-radius: 4px; display: grid; place-items: center; font-family: var(--font-mono); font-weight: 500; }
+.qbar .q1, .qbadge.q1 { background: var(--q1); color: var(--q1t); }
+.qbar .q2, .qbadge.q2 { background: var(--q2); color: var(--q2t); }
+.qbar .q3, .qbadge.q3 { background: var(--q3); color: var(--q3t); }
+.qbar .q4, .qbadge.q4 { background: var(--q4); color: var(--q4t); }
+.qends { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-family: var(--font-mono); font-size: .74rem; }
+.metrics { margin: 20px 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.metrics div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; padding-block: 10px; border-bottom: 1px solid var(--line); }
+.metrics dt { font-weight: 600; }
+.metrics dd { margin: 0; color: var(--muted); font-family: var(--font-mono); font-size: .88rem; }
+
+/* Sections */
+.sec { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 32px; max-width: 62ch; }
+.sec-head p { color: var(--muted); }
+.split { display: grid; gap: 32px; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; }
+  .split .sec-head { position: sticky; top: 24px; align-self: start; margin-bottom: 0; }
+}
+
+/* Workflow track */
+.steps { list-style: none; margin: 0; padding: 0; }
+.step { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; position: relative; padding-bottom: 28px; }
+.step::before { content: ""; position: absolute; left: 21px; top: 46px; bottom: 2px; width: 2px; background: var(--line); }
+.step:last-child { padding-bottom: 0; }
+.step:last-child::before { display: none; }
+.step .n { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); color: var(--accent); display: grid; place-items: center; font-family: var(--font-mono); font-weight: 500; }
+.step h3 { margin-bottom: 4px; padding-top: 8px; }
+.step p { color: var(--muted); margin-bottom: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .03em; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.chip.dars { color: var(--accent); border-color: currentColor; }
+.chip.vosita { color: var(--teal); border-color: currentColor; }
+.chip.soon { border-style: dashed; }
+
+/* Course */
+.cols { display: grid; gap: 20px; }
+@media (min-width: 820px) { .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; min-width: 0; }
+.card .kicker { color: var(--teal); margin-bottom: 8px; }
+.card h3 { margin-bottom: 16px; }
+.lessons { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; counter-reset: l; }
+.lessons li { counter-increment: l; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 8px; padding-block: 10px; border-top: 1px solid var(--line); }
+.lessons li::before { content: counter(l); font-family: var(--font-mono); color: var(--muted); }
+.format { margin-top: 20px; color: var(--muted); font-size: .95rem; }
+
+.compare { margin-top: 32px; }
+.compare h3 { margin-bottom: 12px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tbody th { font-weight: 600; white-space: nowrap; }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+.note { margin-top: 12px; color: var(--muted); font-size: .92rem; max-width: 70ch; }
+
+/* Tools */
+.tools { display: grid; gap: 20px; }
+@media (min-width: 880px) { .tools { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
+.tool h3 { margin-bottom: 6px; }
+.tool .desc { color: var(--muted); font-size: .95rem; margin-bottom: 16px; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.field label { display: block; font-size: .88rem; font-weight: 500; margin-bottom: 4px; }
+.field input {
+  width: 100%; min-height: 44px; padding: 8px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font: 500 1rem var(--font-mono);
+}
+.qresult { display: flex; align-items: center; gap: 14px; margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--accent-soft); }
+.qbadge { flex: none; min-width: 56px; height: 56px; border-radius: 8px; display: grid; place-items: center; font-family: var(--font-mono); font-weight: 500; font-size: 1.3rem; }
+.qresult p { min-width: 0; }
+.qresult .pct { font-family: var(--font-mono); font-weight: 500; }
+.example { margin-top: 12px; color: var(--muted); font-size: .85rem; }
+
+.checks { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; min-width: 0; }
+.checks legend { padding: 0; margin-bottom: 10px; font-size: .88rem; font-weight: 500; }
+.check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: .95rem; cursor: pointer; }
+.check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); }
+.verdict { margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--accent-soft); border: 1px solid transparent; }
+.verdict .vh { display: flex; justify-content: space-between; gap: 12px; font-weight: 600; margin-bottom: 4px; }
+.verdict .vc { font-family: var(--font-mono); font-weight: 500; font-size: .88rem; color: var(--muted); white-space: nowrap; }
+.verdict p { font-size: .93rem; }
+.verdict[data-level="warn"] { background: var(--warn-soft); }
+.verdict[data-level="warn"] .vt { color: var(--warn); }
+.verdict[data-level="bad"] { background: var(--warn-soft); border-color: var(--warn); }
+.verdict[data-level="bad"] .vt { color: var(--warn); }
+.soon-row { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--muted); font-size: .95rem; }
+
+/* AI */
+.aigrid { display: grid; gap: 28px; }
+@media (min-width: 820px) { .aigrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } }
+.aigroup { border-top: 2px solid var(--ink); padding-top: 14px; min-width: 0; }
+.aigroup h3 { margin-bottom: 8px; }
+.names { font-family: var(--font-mono); font-size: .82rem; color: var(--teal); margin-bottom: 8px; line-height: 1.7; }
+.aigroup p:last-child { color: var(--muted); font-size: .95rem; }
+
+.prompt { margin-top: 36px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 12px; min-width: 0; }
+.prompt pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 500 .92rem/1.6 var(--font-mono); }
+.prompt .actions-row { display: flex; justify-content: flex-start; }
+
+.ethics { margin-top: 24px; background: var(--warn-soft); border-radius: 12px; padding: 20px 20px 8px; }
+.ethics h3 { margin-bottom: 12px; color: var(--warn); }
+.ethics ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; padding-bottom: 12px; }
+.ethics li { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); gap: 8px; }
+.ethics li::before { content: "!"; font-family: var(--font-mono); font-weight: 500; color: var(--warn); }
+
+/* CTA */
+.cta { margin-top: 24px; background: var(--accent); color: var(--accent-ink); border-radius: 16px; padding: 36px 24px; display: grid; gap: 16px; justify-items: start; }
+.cta h2 { max-width: 24ch; }
+.cta p { max-width: 54ch; }
+.cta .btn { background: var(--accent-ink); color: var(--accent); }
+.cta .btn:focus-visible { outline-color: var(--accent-ink); }
+
+footer { border-top: 1px solid var(--line); padding-block: 24px 8px; color: var(--muted); font-size: .9rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+</style>
+</head>
+<body>
+
+<header class="top wrap">
+  <a class="brand" href="#top" aria-label="Ilmiy Yo'l bosh sahifa">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="7" y="7" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <rect x="7" y="7" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" transform="rotate(45 16 16)"/>
+    </svg>
+    <span>Ilmiy Yo'l</span>
+  </a>
+  <nav class="nav" aria-label="Bo'limlar">
+    <a href="#jarayon">Jarayon</a>
+    <a href="#kurs">Kurs</a>
+    <a href="#vositalar">Vositalar</a>
+    <a href="#ai-modul">AI va til</a>
+    <a href="../">Portfolio</a>
+  </nav>
+  <a class="btn btn-primary btn-sm" data-tg href="https://t.me/bek92_02" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.3 2.9 10.5c-1 .4-1 1.8.1 2.1l4.6 1.4 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.6 4.7 3.5c.8.6 1.9.1 2.1-.9l3-15.2c.2-1-.8-1.8-1.7-1.5ZM9 13.6l9.1-5.7-7.2 6.9-.3 3.3L9 13.6Z"/></svg>
+    Telegram
+  </a>
+</header>
+
+<main>
+  <section class="hero wrap" id="top">
+    <div>
+      <p class="eyebrow mono-label">Scopus va Web of Science uchun</p>
+      <h1>Ilmiy maqolani noldan xalqaro jurnalgacha olib chiqing</h1>
+      <p class="lead">O'zbek tilidagi darslar, tayyor vositalar va sun'iy intellektdan to'g'ri foydalanish yo'riqnomasi. Elsevier, Scopus yoki Q1 nimaligini bilmasangiz ham boshlashingiz mumkin.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-tg href="https://t.me/bek92_02" target="_blank" rel="noopener">Telegram kanalga qo'shilish</a>
+        <a class="btn btn-ghost" href="#jarayon">Ish jarayonini ko'rish</a>
+      </div>
+    </div>
+
+    <aside class="scale" aria-labelledby="scale-title">
+      <h2 id="scale-title">Jurnal darajasi nima?</h2>
+      <p class="sub">Har bir soha jurnallari reyting bo'yicha to'rt teng qismga bo'linadi.</p>
+      <div class="qbar" role="img" aria-label="Q1 eng yuqori 25 foiz, Q4 eng quyi 25 foiz">
+        <span class="q1">Q1</span><span class="q2">Q2</span><span class="q3">Q3</span><span class="q4">Q4</span>
+      </div>
+      <div class="qends"><span>eng yuqori 25%</span><span>eng quyi 25%</span></div>
+      <dl class="metrics">
+        <div><dt>Scopus</dt><dd>CiteScore, SJR</dd></div>
+        <div><dt>Web of Science</dt><dd>Impact Factor (JCR)</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="sec wrap" id="jarayon">
+    <div class="split">
+      <div class="sec-head">
+        <p class="eyebrow mono-label">Ilmiy ish jarayoni</p>
+        <h2>G'oyadan yuborishgacha yetti bosqich</h2>
+        <p>Platforma shu tartibda joylashgan. O'z bosqichingizni tanlang va kerakli dars yoki vositaga o'ting.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="n" aria-hidden="true">1</span>
+          <div>
+            <h3>G'oya va mavzu</h3>
+            <p>Nimani o'rganmoqchisiz, natija kimga kerak va sohangizda bu mavzu qanchalik dolzarb.</p>
+            <div class="chips"><span class="chip dars">Dars</span></div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="n" aria-hidden="true">2</span>
+          <div>
+            <h3>Adabiyot tahlili</h3>
+            <p>So'nggi 20-30 ta maqolani tez o'qish va bitta jadvalga yig'ish.</p>
+            <div class="chips"><span class="chip dars">Dars</span><span class="chip vosita">Elicit, Consensus</span></div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="n" aria-hidden="true">3</span>
+          <div>
+            <h3>Ilmiy yangilik</h3>
+            <p>Research gap: yangi ma'lumot, yangi metod yoki yangi kontekst (masalan, O'zbekiston).</p>
+            <div class="chips"><span class="chip dars">Dars</span><span class="chip soon">Research gap yordamchisi</span></div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="n" aria-hidden="true">4</span>
+          <div>
+            <h3>Metodologiya</h3>
+            <p>Savol, gipoteza, ma'lumot yig'ish va statistika asoslari.</p>
+            <div class="chips"><span class="chip dars">Dars</span><span class="chip vosita">Jamovi, SPSS</span></div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="n" aria-hidden="true">5</span>
+          <div>
+            <h3>Yozish (IMRaD)</h3>
+            <p>Introduction, Methods, Results, Discussion va abstract. Akademik ingliz tili.</p>
+            <div class="chips"><span class="chip dars">Dars</span><span class="chip vosita">Grammarly, Trinka</span><span class="chip soon">IMRaD shabloni</span></div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="n" aria-hidden="true">6</span>
+          <div>
+            <h3>Jurnal tanlash</h3>
+            <p>Scopus va Web of Science'da tekshirish, Q darajasini bilish, soxta jurnallardan saqlanish.</p>
+            <div class="chips"><span class="chip dars">Dars</span><a class="chip vosita" href="#vositalar">Q kalkulyatori</a><a class="chip vosita" href="#vositalar">Soxta jurnal tekshiruvi</a></div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="n" aria-hidden="true">7</span>
+          <div>
+            <h3>Yuborish</h3>
+            <p>Cover letter, reviewer sharhiga javob va rad etilganda keyingi qadam.</p>
+            <div class="chips"><span class="chip dars">Dars</span><span class="chip soon">Cover letter namunalari</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="kurs">
+    <div class="sec-head">
+      <p class="eyebrow mono-label">Kurs</p>
+      <h2>Boshlovchilar uchun, noldan boshlanadi</h2>
+      <p>Avval ilmiy dunyoning asosiy tushunchalari, keyin maqolaning o'zi. Har darsda bitta yangi tushuncha va bitta amaliy qadam.</p>
+    </div>
+
+    <div class="cols">
+      <article class="card">
+        <p class="kicker mono-label">0-modul</p>
+        <h3>Ilmiy dunyo alifbosi</h3>
+        <ol class="lessons">
+          <li>Elsevier va Clarivate kimlar, nima qiladi</li>
+          <li>Scopus nima va unga qanday kiriladi (Documents, Authors, Sources)</li>
+          <li>Web of Science: Core Collection, SCIE, SSCI, AHCI, ESCI</li>
+          <li>Q1-Q4, CiteScore va Impact Factor</li>
+          <li>Iqtibos (citation) va h-index</li>
+          <li>Open access, peer review va boshqa atamalar</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="kicker mono-label">Asosiy kurs</p>
+        <h3>Scopus maqolasiga 7 qadam</h3>
+        <ol class="lessons">
+          <li>Jurnalni Scopus va Web of Science'da tekshirish</li>
+          <li>Mavzu tanlash va adabiyot tahlili</li>
+          <li>Ilmiy yangilik va research gap</li>
+          <li>Tadqiqot dizayni va metodologiya</li>
+          <li>IMRaD tuzilishi va abstract</li>
+          <li>Akademik ingliz tili va plagiatdan saqlanish</li>
+          <li>Jurnalga yuborish va rad javobi bilan ishlash</li>
+        </ol>
+      </article>
+    </div>
+    <p class="format">Har dars 5-10 daqiqalik ekran yozuvi: qaysi tugma bosiladi va nimaga qaraladi. Oxirida bir sahifa konspekt va amaliy topshiriq.</p>
+
+    <div class="compare">
+      <h3>Scopus va Web of Science: asosiy farqlar</h3>
+      <div class="tablewrap">
+        <table>
+          <caption class="sr-only">Scopus va Web of Science taqqoslash jadvali</caption>
+          <thead>
+            <tr><th scope="col">Mezon</th><th scope="col">Scopus</th><th scope="col">Web of Science</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Egasi</th><td>Elsevier</td><td>Clarivate</td></tr>
+            <tr><th scope="row">Jurnal ko'rsatkichi</th><td>CiteScore, SJR</td><td>Impact Factor (JCR)</td></tr>
+            <tr><th scope="row">Daraja</th><td>Q1-Q4, sohadagi o'rin bo'yicha</td><td>Q1-Q4, JCR'da sohadagi o'rin bo'yicha</td></tr>
+            <tr><th scope="row">Jurnalni qidirish</th><td>Sources bo'limi</td><td>Master Journal List</td></tr>
+            <tr><th scope="row">Bo'limlar</th><td>Documents, Authors, Sources</td><td>Core Collection ichida SCIE, SSCI, AHCI, ESCI</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Dissertatsiya va ish joyi uchun qaysi baza qabul qilinishi O'zbekistonda rasmiy hujjatlar (OAK) bilan belgilanadi. Talablar o'zgarib turadi, shuning uchun kursda har safar joriy manba ko'rsatiladi.</p>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="vositalar">
+    <div class="sec-head">
+      <p class="eyebrow mono-label">Vositalar</p>
+      <h2>Jurnal tanlashda ishlatiladigan ikkita vosita</h2>
+      <p>Ikkalasi ham yordamchi hisoblanadi. Yakuniy qarorni jurnalning rasmiy sahifasi va bazadagi ma'lumot asosida qiling.</p>
+    </div>
+
+    <div class="tools">
+      <article class="card tool" aria-labelledby="qt-title">
+        <h3 id="qt-title">Q darajasini hisoblash</h3>
+        <p class="desc">Jurnalning sohadagi o'rnini va sohadagi jurnallar sonini kiriting. Bu raqamlarni Scopus Sources yoki JCR sahifasida topasiz.</p>
+        <form id="qform" novalidate>
+          <div class="fields">
+            <div class="field">
+              <label for="rank">Jurnalning o'rni</label>
+              <input id="rank" name="rank" type="number" inputmode="numeric" min="1" step="1" value="18">
+            </div>
+            <div class="field">
+              <label for="total">Sohadagi jurnallar soni</label>
+              <input id="total" name="total" type="number" inputmode="numeric" min="1" step="1" value="120">
+            </div>
+          </div>
+          <div class="qresult" id="qresult" aria-live="polite">
+            <span class="qbadge q1" id="qbadge">Q1</span>
+            <p id="qtext"><span class="pct">15%</span> bilan sohadagi eng yuqori to'rtdan biriga kiradi.</p>
+          </div>
+        </form>
+        <p class="example">Namuna qiymatlar qo'yilgan. O'z jurnalingiz raqamlarini kiriting. Hisob taxminiy, aniq darajani bazaning o'zida ko'ring.</p>
+      </article>
+
+      <article class="card tool" aria-labelledby="pt-title">
+        <h3 id="pt-title">Soxta jurnal belgilari</h3>
+        <p class="desc">Jurnal haqida bilganlaringizni belgilang. Belgilar qancha ko'p bo'lsa, xavf shuncha yuqori.</p>
+        <form id="pform" novalidate>
+          <fieldset class="checks">
+            <legend>Quyidagilardan qaysilari to'g'ri keladi?</legend>
+            <label class="check"><input type="checkbox"><span>Jurnal Scopus Sources yoki Web of Science Master Journal List'dan topilmadi</span></label>
+            <label class="check"><input type="checkbox" checked><span>Maqola 1-2 hafta ichida qabul qilinishi va'da qilinmoqda</span></label>
+            <label class="check"><input type="checkbox"><span>Muharrirlar haqida ma'lumot yo'q yoki uni tekshirib bo'lmaydi</span></label>
+            <label class="check"><input type="checkbox"><span>Taklif tanishmagan elektron pochtadan keldi ("maqola yuboring")</span></label>
+            <label class="check"><input type="checkbox"><span>Impact Factor yoki indeks haqida da'vo bor, lekin rasmiy bazada tasdiqlanmaydi</span></label>
+            <label class="check"><input type="checkbox" checked><span>Nashr to'lovi (APC) saytda yozilmagan yoki qabuldan keyin aytiladi</span></label>
+            <label class="check"><input type="checkbox"><span>Nomi mashhur jurnalga juda o'xshash yoki sayt xatolarga to'la</span></label>
+            <label class="check"><input type="checkbox"><span>Peer review (ekspert baholash) jarayoni tushuntirilmagan</span></label>
+          </fieldset>
+          <div class="verdict" id="verdict" data-level="warn" aria-live="polite">
+            <div class="vh"><span class="vt" id="vtitle">Ehtiyot bo'ling</span><span class="vc" id="vcount">2 / 8 belgi</span></div>
+            <p id="vtext">Bir necha belgi bor. Yuborishdan oldin jurnalni Scopus Sources va Web of Science Master Journal List'da tekshiring, hamkasblardan so'rang.</p>
+          </div>
+        </form>
+        <p class="example">Namuna holat ko'rsatilgan: ikki belgi tanlangan. Ro'yxat yakuniy xulosa emas.</p>
+      </article>
+    </div>
+
+    <div class="soon-row">
+      <span>Tayyorlanmoqda:</span>
+      <span class="chip soon">Research gap yordamchisi</span>
+      <span class="chip soon">IMRaD shabloni</span>
+      <span class="chip soon">Cover letter namunalari</span>
+      <span class="chip soon">Atamalar lug'ati</span>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="ai-modul">
+    <div class="sec-head">
+      <p class="eyebrow mono-label">AI va til vositalari</p>
+      <h2>Sun'iy intellektdan ilmiy ishda qanday foydalaniladi</h2>
+      <p>AI adabiyotni tezroq topishga va matnni yaxshilashga yordam beradi. Tadqiqotning o'zi muallifniki bo'lib qoladi.</p>
+    </div>
+
+    <div class="aigrid">
+      <div class="aigroup">
+        <h3>Adabiyot qidirish</h3>
+        <p class="names">Elicit · Consensus · Semantic Scholar · ResearchRabbit</p>
+        <p>Maqolalarni topish, qisqa xulosasini ko'rish va bog'liq ishlarni kuzatish.</p>
+      </div>
+      <div class="aigroup">
+        <h3>Til va akademik uslub</h3>
+        <p class="names">Grammarly · Trinka · DeepL · QuillBot</p>
+        <p>Grammatika, ilmiy uslub, tarjima va parafraz. Natijani har doim o'zingiz qayta o'qing.</p>
+      </div>
+      <div class="aigroup">
+        <h3>Rasmiylashtirish va tahlil</h3>
+        <p class="names">Zotero · Mendeley · Jamovi · SPSS</p>
+        <p>Manbalar ro'yxati, iqtiboslar va statistik hisob. Plagiat tekshiruvi yuborishdan oldin.</p>
+      </div>
+    </div>
+
+    <div class="prompt">
+      <h3>Namuna so'rov (prompt)</h3>
+      <pre id="prompt-text">Quyida maqolamning abstracti bor. IMRaD talabi bo'yicha qaysi qism yetishmayapti? Matnni qayta yozma, faqat savol va izoh ber.</pre>
+      <div class="actions-row"><button class="btn btn-ghost btn-sm" id="copy-btn" type="button">Nusxalash</button></div>
+    </div>
+
+    <div class="ethics">
+      <h3>Uchta qoida</h3>
+      <ul>
+        <li>AI soxta havola to'qishi mumkin. Har bir manbani Scopus yoki Google Scholar'da o'zingiz tekshiring.</li>
+        <li>Ko'p jurnallar AI ishlatilganini e'lon qilishni talab qiladi. Yuborishdan oldin jurnalning qoidalarini o'qing.</li>
+        <li>Tadqiqot, ma'lumot va xulosa muallifniki. AI ularni o'ylab topmaydi, QuillBot kabi vositalar plagiatni yashirish uchun ishlatilmaydi.</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <h2>Yangi darslar va maslahatlar Telegram'da</h2>
+      <p>Har kuni bitta atama, bitta maslahat va rad etilgan maqolalardan bitta xato tahlili.</p>
+      <a class="btn" data-tg href="https://t.me/bek92_02" target="_blank" rel="noopener">Telegram kanalga o'tish</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <a href="../">← Portfolioga qaytish</a>
+  <span>Ilmiy Yo'l · 2026</span>
+  <span>Scopus, Elsevier, Web of Science va Clarivate o'z egalarining belgilaridir.</span>
+</footer>
+
+<script>
+  // Telegram manzili. Kanal tayyor bo'lganda faqat shu qatorni almashtiring.
+  var TELEGRAM_URL = "https://t.me/bek92_02";
+  document.querySelectorAll("[data-tg]").forEach(function (a) { a.href = TELEGRAM_URL; });
+
+  // Q darajasi kalkulyatori
+  (function () {
+    var rank = document.getElementById("rank");
+    var total = document.getElementById("total");
+    var badge = document.getElementById("qbadge");
+    var text = document.getElementById("qtext");
+    var form = document.getElementById("qform");
+    form.addEventListener("submit", function (e) { e.preventDefault(); });
+
+    function pctText(p) {
+      var s = (Math.round(p * 10) / 10).toString();
+      return s + "%";
+    }
+    function update() {
+      var r = parseInt(rank.value, 10);
+      var t = parseInt(total.value, 10);
+      if (!(r >= 1 && t >= 1 && r <= t)) {
+        badge.className = "qbadge q4";
+        badge.textContent = "?";
+        text.textContent = "O'rin 1 dan sohadagi jurnallar soniga qadar bo'lishi kerak.";
+        return;
+      }
+      var p = (r / t) * 100;
+      var q = p <= 25 ? 1 : p <= 50 ? 2 : p <= 75 ? 3 : 4;
+      var words = {
+        1: "sohadagi eng yuqori to'rtdan biriga kiradi.",
+        2: "sohadagi ikkinchi to'rtdan birga kiradi.",
+        3: "sohadagi uchinchi to'rtdan birga kiradi.",
+        4: "sohadagi eng quyi to'rtdan birga kiradi."
+      };
+      badge.className = "qbadge q" + q;
+      badge.textContent = "Q" + q;
+      text.innerHTML = "";
+      var span = document.createElement("span");
+      span.className = "pct";
+      span.textContent = pctText(p);
+      text.appendChild(span);
+      text.appendChild(document.createTextNode(" bilan " + words[q]));
+    }
+    rank.addEventListener("input", update);
+    total.addEventListener("input", update);
+    update();
+  })();
+
+  // Soxta jurnal belgilari
+  (function () {
+    var form = document.getElementById("pform");
+    var boxes = form.querySelectorAll("input[type=checkbox]");
+    var verdict = document.getElementById("verdict");
+    var title = document.getElementById("vtitle");
+    var count = document.getElementById("vcount");
+    var body = document.getElementById("vtext");
+    form.addEventListener("submit", function (e) { e.preventDefault(); });
+
+    function update() {
+      var n = 0;
+      boxes.forEach(function (b) { if (b.checked) n++; });
+      count.textContent = n + " / " + boxes.length + " belgi";
+      if (n === 0) {
+        verdict.dataset.level = "none";
+        title.textContent = "Belgi tanlanmadi";
+        body.textContent = "Jurnal haqida bilganlaringizni belgilang. Belgi bo'lmasa ham jurnalni Scopus Sources yoki Web of Science Master Journal List'da tekshirishni unutmang.";
+      } else if (n <= 2) {
+        verdict.dataset.level = "warn";
+        title.textContent = "Ehtiyot bo'ling";
+        body.textContent = "Bir necha belgi bor. Yuborishdan oldin jurnalni Scopus Sources va Web of Science Master Journal List'da tekshiring, hamkasblardan so'rang.";
+      } else {
+        verdict.dataset.level = "bad";
+        title.textContent = "Yuqori xavf";
+        body.textContent = "Bu soxta (predatory) jurnal bo'lishi ehtimoli yuqori. Maqola yuborishdan va to'lov qilishdan oldin yana bir bor mustaqil tekshiring.";
+      }
+    }
+    boxes.forEach(function (b) { b.addEventListener("change", update); });
+    update();
+  })();
+
+  // Namuna so'rovni nusxalash
+  (function () {
+    var btn = document.getElementById("copy-btn");
+    var pre = document.getElementById("prompt-text");
+    var timer;
+    function reset() { btn.textContent = "Nusxalash"; }
+    function selectText() {
+      var range = document.createRange();
+      range.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    btn.addEventListener("click", function () {
+      clearTimeout(timer);
+      var done = function () { btn.textContent = "Nusxalandi"; timer = setTimeout(reset, 2000); };
+      var fail = function () { selectText(); btn.textContent = "Matn belgilandi, nusxalang"; timer = setTimeout(reset, 3000); };
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) { fail(); return; }
+        navigator.clipboard.writeText(pre.textContent).then(done, fail);
+      } catch (e) { fail(); }
+    });
+  })();
+</script>
+</body>
+</html>
