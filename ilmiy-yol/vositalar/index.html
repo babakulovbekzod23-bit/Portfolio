@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vositalar | Ilmiy Yo'l</title>
+<meta name="description" content="Q kalkulyatori, soxta jurnal tekshiruvi, matn tekshiruvi va Grammarly mashqi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="top wrap">
+<a class="brand" href="../index.html" aria-label="Ilmiy Yo'l bosh sahifa"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="7" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="7" y="7" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" transform="rotate(45 16 16)"/></svg><span>Ilmiy Yo'l</span></a>
+<nav class="nav" aria-label="Bo'limlar"><a href="../index.html">Bosh sahifa</a><a href="../trening/index.html">Trening</a><a href="../shablonlar/index.html">Shablonlar</a><a href="../vositalar/index.html" aria-current="page">Vositalar</a><a href="../../#ilmiy">Ilmiy ishlar</a><a href="../aloqa/index.html">Aloqa</a></nav>
+<a class="btn btn-primary btn-sm" href="https://t.me/bek92_02" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.3 2.9 10.5c-1 .4-1 1.8.1 2.1l4.6 1.4 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.6 4.7 3.5c.8.6 1.9.1 2.1-.9l3-15.2c.2-1-.8-1.8-1.7-1.5ZM9 13.6l9.1-5.7-7.2 6.9-.3 3.3L9 13.6Z"/></svg>Telegram</a>
+</header>
+<main>
+
+<div class="wrap">
+  <div class="pagehead">
+    <p class="eyebrow mono-label">Vositalar</p>
+    <h1>Sinab ko'ring: hammasi shu sahifada ishlaydi</h1>
+    <p>Hisoblash va tekshirish brauzeringizda bajariladi. Kiritgan ma'lumotingiz hech qayerga yuborilmaydi.</p>
+  </div>
+  <div class="tools" style="margin-top:24px">
+    <article class="card tool" id="q" aria-labelledby="qt-title">
+      <h3 id="qt-title">Q darajasini hisoblash</h3>
+      <p class="desc">Jurnalning sohadagi o'rnini va sohadagi jurnallar sonini kiriting. Bu raqamlarni Scopus Sources yoki JCR sahifasida topasiz.</p>
+      <form id="qform" novalidate>
+        <div class="fields">
+          <div class="field"><label for="rank">Jurnalning o'rni</label><input id="rank" name="rank" type="number" inputmode="numeric" min="1" step="1" value="18"></div>
+          <div class="field"><label for="total">Sohadagi jurnallar soni</label><input id="total" name="total" type="number" inputmode="numeric" min="1" step="1" value="120"></div>
+        </div>
+        <div class="qresult" id="qresult" aria-live="polite"><span class="qbadge q1" id="qbadge">Q1</span><p id="qtext"><span class="pct">15%</span> bilan sohadagi eng yuqori to'rtdan biriga kiradi.</p></div>
+      </form>
+      <p class="example">Namuna qiymatlar qo'yilgan. O'z jurnalingiz raqamlarini kiriting. Hisob taxminiy, aniq darajani bazaning o'zida ko'ring.</p>
+    </article>
+
+    <article class="card tool" id="soxta" aria-labelledby="pt-title">
+      <h3 id="pt-title">Soxta jurnal belgilari</h3>
+      <p class="desc">Jurnal haqida bilganlaringizni belgilang. Belgilar qancha ko'p bo'lsa, xavf shuncha yuqori.</p>
+      <form id="pform" novalidate>
+        <fieldset class="checks"><legend>Quyidagilardan qaysilari to'g'ri keladi?</legend><label class="check"><input type="checkbox"><span>Jurnal Scopus Sources yoki Web of Science Master Journal List'dan topilmadi</span></label><label class="check"><input type="checkbox" checked><span>Maqola 1-2 hafta ichida qabul qilinishi va'da qilinmoqda</span></label><label class="check"><input type="checkbox"><span>Muharrirlar haqida ma'lumot yo'q yoki uni tekshirib bo'lmaydi</span></label><label class="check"><input type="checkbox"><span>Taklif tanishmagan elektron pochtadan keldi ("maqola yuboring")</span></label><label class="check"><input type="checkbox"><span>Impact Factor yoki indeks haqida da'vo bor, lekin rasmiy bazada tasdiqlanmaydi</span></label><label class="check"><input type="checkbox" checked><span>Nashr to'lovi (APC) saytda yozilmagan yoki qabuldan keyin aytiladi</span></label><label class="check"><input type="checkbox"><span>Nomi mashhur jurnalga juda o'xshash yoki sayt xatolarga to'la</span></label><label class="check"><input type="checkbox"><span>Peer review (ekspert baholash) jarayoni tushuntirilmagan</span></label></fieldset>
+        <div class="verdict" id="verdict" data-level="warn" aria-live="polite">
+          <div class="vh"><span class="vt" id="vtitle">Ehtiyot bo'ling</span><span class="vc" id="vcount">2 / 8 belgi</span></div>
+          <p id="vtext">Bir necha belgi bor. Yuborishdan oldin jurnalni Scopus Sources va Web of Science Master Journal List'da tekshiring, hamkasblardan so'rang.</p>
+        </div>
+      </form>
+      <p class="example">Namuna holat ko'rsatilgan: ikki belgi tanlangan. Ro'yxat yakuniy xulosa emas.</p>
+    </article>
+
+    <article class="card tool wide" id="matn" aria-labelledby="mt-title">
+      <h3 id="mt-title">Matn tekshiruvi</h3>
+      <p class="desc">Inglizcha abstract yoki xatboshini qo'ying. Vosita ortiqcha iboralar, uzun jumlalar va takrorlarni topadi. Natija o'zgartirgan sayin yangilanadi.</p>
+      <label class="sr-only" for="txt">Tekshiriladigan matn</label>
+      <textarea id="txt" rows="7" spellcheck="false">The increasing integration of artificial intelligence into education has prompted new opportunities for enhancing learning in technical disciplines. This study explores the role of ChatGPT, a language-based AI model, in teaching the subject of computer networks. Given the complexity of networking topics such as IP addressing, routing, and protocol analysis, the use of AI tools requires careful evaluation.</textarea>
+      <div class="dl"><button class="btn btn-ghost btn-sm" id="txt-reset" type="button">Namuna matnni qaytarish</button></div>
+      <div id="txt-out" aria-live="polite"></div>
+    </article>
+  </div>
+
+  <section class="sec" id="grammarly" style="margin-top:40px">
+    <div class="sec-head"><p class="eyebrow mono-label">Grammarly mashqi</p><h2>Oldin va keyin</h2><p>Namuna maqola abstractidan uchta jumla. Chiziq tortilgan so'zlar olib tashlandi, ajratilganlari qo'shildi.</p></div>
+    <div class="ba">
+      <figure lang="en"><figcaption>Oldin</figcaption><p>The increasing integration of artificial intelligence into education has <del>prompted</del> new opportunities for <del>enhancing</del> learning in technical disciplines. This study explores the role of ChatGPT, a language-based AI model, in teaching <del>the subject of</del> computer networks. <del>Given the complexity of</del> networking topics such as IP addressing, routing, and protocol analysis<del>, the use of</del> AI tools <del>requires</del> careful evaluation.</p></figure>
+      <figure lang="en"><figcaption>Keyin (tahrir namunasi)</figcaption><p>The increasing integration of artificial intelligence into education has <ins>created</ins> new opportunities for learning in technical disciplines. This study explores the role of ChatGPT, a language-based AI model, in teaching computer networks. <ins>Because</ins> networking topics such as IP addressing, routing, and protocol analysis <ins>are complex,</ins> AI tools <ins>need</ins> careful evaluation.</p></figure>
+    </div>
+    <ol class="how">
+      <li>Matnni Overleaf'ga qo'ying, Grammarly kengaytmasi yoqilgan bo'lsin.</li>
+      <li>Takliflarni faqat oddiy matnda ko'ring. <code>\cite{...}</code> kabi LaTeX buyruqlariga tegadigan takliflarni qabul qilmang.</li>
+      <li>Har taklifni o'qib, ma'nosi o'zgarmasligini tekshiring, qabul qiling va Recompile bosing.</li>
+    </ol>
+    <p class="note">Grammarly jumlani tuzatadi, lekin manbalardagi xatoni topmaydi. Shu maqolada bitta manbaning yili va jild raqami noto'g'ri yozilgan, yana bittasini topib bo'lmadi. Havolalarni doim o'zingiz tekshiring.</p>
+  </section>
+
+  <section class="sec" id="tahrir">
+    <div class="sec-head"><p class="eyebrow mono-label">Tahrir xizmati</p><h2>Matningizni tahrirlatish</h2><p>Abstract yoki bir-ikki xatboshini Telegram orqali yuboring. Javob yuqoridagidek "oldin va keyin" ko'rinishida qaytadi.</p></div>
+    <ol class="how">
+      <li>Qisqa qismni tayyorlang, masalan abstract.</li>
+      <li>Telegram orqali yuboring va jurnal nomini yozing, agar bo'lsa.</li>
+      <li>Javobda uchta narsa bo'ladi: tahrirlangan matn, o'zgarishlar izohi va tekshirilishi kerak bo'lgan joylar (manbalar, raqamlar).</li>
+    </ol>
+    <p class="note">Faqat til va uslub tuzatiladi. Tadqiqot mazmuni, natijalar va xulosalar muallifniki. Ko'p jurnallar AI yordami ishlatilganini e'lon qilishni talab qiladi, jurnal qoidasini tekshiring. Matningiz boshqalarga ko'rsatilmaydi. Sinov bosqichida xizmat birinchi foydalanuvchilar uchun bepul.</p>
+    <div class="dl"><a class="btn btn-primary btn-sm" href="https://t.me/bek92_02" target="_blank" rel="noopener">Telegram orqali yuborish</a></div>
+  </section>
+
+  <section class="sec" id="ai">
+    <div class="sec-head"><p class="eyebrow mono-label">AI vositalari</p><h2>Qaysi vosita nima uchun</h2></div>
+    <div class="cols">
+      <article class="card"><h3>Adabiyot qidirish</h3><p class="desc">Elicit, Consensus, Semantic Scholar, ResearchRabbit: maqolalarni topish, qisqa xulosasini ko'rish va bog'liq ishlarni kuzatish.</p></article>
+      <article class="card"><h3>Til va akademik uslub</h3><p class="desc">Grammarly, Trinka, DeepL, QuillBot: grammatika, ilmiy uslub, tarjima va parafraz. Natijani har doim o'zingiz qayta o'qing.</p></article>
+      <article class="card"><h3>Rasmiylashtirish va tahlil</h3><p class="desc">Zotero, Mendeley, Jamovi, SPSS: manbalar ro'yxati, iqtiboslar va statistik hisob. Plagiat tekshiruvi yuborishdan oldin.</p></article>
+      <article class="card prompt"><h3>Namuna so'rov (prompt)</h3><pre id="prompt-text">Quyida maqolamning abstracti bor. IMRaD talabi bo'yicha qaysi qism yetishmayapti? Matnni qayta yozma, faqat savol va izoh ber.</pre><button class="btn btn-ghost btn-sm" id="copy-btn" type="button">Nusxalash</button></article>
+    </div>
+    <div class="ethics" style="margin-top:20px">
+      <h3>Uchta qoida</h3>
+      <ul>
+        <li>AI soxta havola to'qishi mumkin. Har bir manbani Scopus yoki Google Scholar'da o'zingiz tekshiring.</li>
+        <li>Ko'p jurnallar AI ishlatilganini e'lon qilishni talab qiladi. Yuborishdan oldin jurnalning qoidalarini o'qing.</li>
+        <li>Tadqiqot, ma'lumot va xulosa muallifniki. AI ularni o'ylab topmaydi, QuillBot kabi vositalar plagiatni yashirish uchun ishlatilmaydi.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+</main>
+<footer class="wrap"><span>Ilmiy Yo'l · 2026</span><span><a href="../../">← Portfolio</a> · <a href="https://t.me/bek92_02" target="_blank" rel="noopener">Telegram</a></span></footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

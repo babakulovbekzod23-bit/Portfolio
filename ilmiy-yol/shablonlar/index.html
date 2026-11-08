@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shablonlar | Ilmiy Yo'l</title>
+<meta name="description" content="IEEE va Springer Nature maqola shablonlari: yuklab olish va kodni ko'rish.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="top wrap">
+<a class="brand" href="../index.html" aria-label="Ilmiy Yo'l bosh sahifa"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="7" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="7" y="7" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" transform="rotate(45 16 16)"/></svg><span>Ilmiy Yo'l</span></a>
+<nav class="nav" aria-label="Bo'limlar"><a href="../index.html">Bosh sahifa</a><a href="../trening/index.html">Trening</a><a href="../shablonlar/index.html" aria-current="page">Shablonlar</a><a href="../vositalar/index.html">Vositalar</a><a href="../../#ilmiy">Ilmiy ishlar</a><a href="../aloqa/index.html">Aloqa</a></nav>
+<a class="btn btn-primary btn-sm" href="https://t.me/bek92_02" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.3 2.9 10.5c-1 .4-1 1.8.1 2.1l4.6 1.4 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.6 4.7 3.5c.8.6 1.9.1 2.1-.9l3-15.2c.2-1-.8-1.8-1.7-1.5ZM9 13.6l9.1-5.7-7.2 6.9-.3 3.3L9 13.6Z"/></svg>Telegram</a>
+</header>
+<main>
+
+<div class="wrap">
+  <div class="pagehead">
+    <p class="eyebrow mono-label">Shablonlar</p>
+    <h1>Maqola shablonlari, LaTeX bilan</h1>
+    <p>Tayyor shablonda maqola tuzilishi o'z-o'zidan to'g'ri bo'ladi. Har faylda IMRaD bo'limlari o'zbekcha izoh bilan yozilgan.</p>
+  </div>
+  <div class="cols" style="margin-top:24px">
+<article class="card"><p class="kicker mono-label">IEEE</p><h3>IEEEtran jurnal shabloni</h3><p class="desc">Texnika, axborot texnologiyalari va telekommunikatsiya jurnallari uchun. Sarlavha, mualliflar, abstract, IMRaD bo'limlari, jadval va formula tayyor.</p><div class="dl"><a class="btn btn-primary btn-sm" href="ieee-shablon.zip" download>ZIP yuklab olish</a><a class="btn btn-ghost btn-sm" href="ieee/main.tex" download>main.tex</a><a class="btn btn-ghost btn-sm" href="ieee/references.bib" download>references.bib</a></div><details class="code"><summary>main.tex kodini shu yerda ko'rish</summary><pre><code>% =====================================================================
+% IEEE jurnal maqolasi shabloni (IEEEtran sinfi) - Ilmiy Yo'l
+% Izohlar o'zbek tilida, maqola matni inglizcha yoziladi.
+%
+% Kompilyatsiya: pdflatex -&gt; bibtex -&gt; pdflatex -&gt; pdflatex
+% (Overleaf'da "Recompile" tugmasi buni o'zi bajaradi.)
+%
+% MUHIM: yuboriladigan jurnalning "Information for Authors" sahifasini
+% o'qing. Ba'zi jurnallar [journal] o'rniga [conference] yoki boshqa
+% sozlama talab qiladi.
+% =====================================================================
+\documentclass[journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+% --- Sarlavha: aniq, mazmunli, qisqa. Qisqartmalardan qoching. ---
+\title{Title of Your Article: Specific, Informative and Concise}
+
+% --- Mualliflar va ish joyi ---
+\author{First~Author,~\IEEEmembership{Member,~IEEE,}
+        Second~Author,
+        and~Third~Author%
+\thanks{Manuscript received Month DD, 2026; revised Month DD, 2026.}%
+\thanks{First Author and Second Author are with the Department of Information Technologies, Example University, City, Country (e-mail: author@example.com).}%
+\thanks{Third Author is with the Example Institute, City, Country.}}
+
+\markboth{IEEE Journal Name, Vol.~XX, No.~X, Month 2026}%
+{Author \MakeLowercase{\textit{et al.}}: Title of Your Article}
+
+\maketitle
+
+% --- Abstract: muammo, usul, asosiy natija, xulosa. Bitta xatboshi. ---
+\begin{abstract}
+State the problem in one sentence. Describe the method you propose or the data you analyse. Report the main quantitative result, for example the improvement over the baseline, with a number. End with the practical or scientific significance. Keep the abstract self-contained, without citations or abbreviations that are not explained.
+\end{abstract}
+
+\begin{IEEEkeywords}
+keyword one, keyword two, keyword three, keyword four.
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+% =====================================================================
+% I (Introduction): muammo nima, nima uchun muhim, boshqalar nima qilgan,
+% sizning ishingiz nimasi bilan yangi (research gap), maqola tuzilishi.
+% =====================================================================
+\section{Introduction}
+State the research problem and why it matters to the field~\cite{he2016resnet,redmon2016yolo}. Summarise what earlier studies have done and where they fall short. Name the gap clearly: new data, a new method, or a new context.
+
+State the contribution of this article in one sentence, then list the contributions if there are several. Finish with a short outline of the remaining sections.
+
+% =====================================================================
+% M (Methods): boshqa olim ishingizni takrorlay oladigan darajada aniq.
+% =====================================================================
+\section{Methodology}
+Describe the data set, its source, size and how it was collected or prepared. Describe the proposed method step by step. Give the evaluation metric in a formula, for example the $F_1$ score:
+\begin{equation}
+  F_1 = \frac{2PR}{P+R},
+  \label{eq:f1}
+\end{equation}
+where $P$ is precision and $R$ is recall. Refer to equations in the text as~(\ref{eq:f1}).
+
+% =====================================================================
+% R (Results): faqat natijalar, izohsiz. Jadval va rasm matnda tilga olinadi.
+% =====================================================================
+\section{Results}
+Present the results without interpretation. Table~\ref{tab:results} shows the comparison with the baseline. Replace the placeholders with your own measured values.
+
+\begin{table}[!t]
+  \caption{Comparison With the Baseline (Replace With Your Results)}
+  \label{tab:results}
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Method &amp; $F_1$ score (\%) &amp; Time (ms) \\
+    \midrule
+    Baseline &amp; XX.X &amp; XX \\
+    Proposed &amp; XX.X &amp; XX \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% Rasm qo'shish uchun (fayl papkada bo'lishi kerak, masalan fig1.pdf):
+% \begin{figure}[!t]
+%   \centering
+%   \includegraphics[width=\columnwidth]{fig1.pdf}
+%   \caption{Short, self-explanatory caption.}
+%   \label{fig:overview}
+% \end{figure}
+
+% =====================================================================
+% D (Discussion): natijalar nimani anglatadi, cheklovlar, boshqa ishlar bilan solishtirish.
+% =====================================================================
+\section{Discussion}
+Interpret the results. Explain why the proposed method behaves as observed, compare with related work~\cite{vaswani2017attention} and state the limitations honestly.
+
+\section{Conclusion}
+Summarise the findings in two or three sentences and state the future work. Do not repeat the abstract word for word and do not introduce new results.
+
+\section*{Acknowledgment}
+Thank the people and funding sources that supported the work. Write ``None'' if there are none.
+
+% --- Adabiyotlar: references.bib faylidan. Faqat matnda keltirilganlari chiqadi. ---
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
+</code></pre></details></article>
+<article class="card"><p class="kicker mono-label">Springer Nature</p><h3>sn-jnl jurnal shabloni</h3><p class="desc">Springer va Nature Portfolio jurnallari uchun. Mualliflar, ish joyi, abstract, IMRaD bo'limlari va Declarations bandlari tayyor.</p><p class="desc">Diqqat: sn-jnl.cls fayli ZIP ichida yo'q, uni Overleaf shablonidan oling.</p><div class="dl"><a class="btn btn-primary btn-sm" href="springer-shablon.zip" download>ZIP yuklab olish</a><a class="btn btn-ghost btn-sm" href="springer/main.tex" download>main.tex</a><a class="btn btn-ghost btn-sm" href="springer/references.bib" download>references.bib</a></div><details class="code"><summary>main.tex kodini shu yerda ko'rish</summary><pre><code>% =====================================================================
+% Springer Nature jurnal maqolasi shabloni (sn-jnl sinfi) - Ilmiy Yo'l
+% Izohlar o'zbek tilida, maqola matni inglizcha yoziladi.
+%
+% DIQQAT: sn-jnl.cls va sn-*.bst fayllari Springer Nature'ning rasmiy
+% fayllari. Ularni shu papkaga qo'ying (Overleaf'dagi "Springer Nature
+% LaTeX Template" ichida tayyor bor) yoki Springer'ning mualliflar
+% sahifasidan oling.
+%
+% Kompilyatsiya: pdflatex -&gt; bibtex -&gt; pdflatex -&gt; pdflatex
+%
+% MUHIM: jurnalning "Instructions for Authors" sahifasini o'qing.
+% Havolalar uslubini sinf parametri belgilaydi (pastda).
+% =====================================================================
+
+% Havolalar uslubi: sn-mathphys-num (raqamli [1]), sn-basic, sn-vancouver,
+% sn-apacite (muallif-yil) va boshqalar. Jurnal talabiga qarab tanlang.
+\documentclass[sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{booktabs}
+
+\raggedbottom
+
+\begin{document}
+
+% --- Sarlavha: aniq, mazmunli, qisqa. Qavs ichida ixcham sarlavha. ---
+\title[Short Title]{Title of Your Article: Specific, Informative and Concise}
+
+% --- Mualliflar: yulduzcha (*) muxbir muallifni bildiradi ---
+\author*[1]{\fnm{First} \sur{Author}}\email{first.author@example.com}
+
+\author[1]{\fnm{Second} \sur{Author}}\email{second.author@example.com}
+
+\author[2]{\fnm{Third} \sur{Author}}\email{third.author@example.com}
+
+\affil*[1]{\orgdiv{Department of Information Technologies}, \orgname{Example University}, \orgaddress{\city{City}, \postcode{100000}, \country{Country}}}
+
+\affil[2]{\orgdiv{Department}, \orgname{Example Institute}, \orgaddress{\city{City}, \postcode{100000}, \country{Country}}}
+
+% --- Abstract: muammo, usul, asosiy natija, xulosa. Bitta xatboshi. ---
+\abstract{State the problem in one sentence. Describe the method you propose or the data you analyse. Report the main quantitative result with a number. End with the practical or scientific significance. Keep the abstract self-contained, without citations. Check the journal's word limit.}
+
+\keywords{keyword one, keyword two, keyword three, keyword four}
+
+\maketitle
+
+% =====================================================================
+% Introduction: muammo, dolzarbligi, oldingi ishlar, research gap, hissa.
+% =====================================================================
+\section{Introduction}\label{sec1}
+State the research problem and why it matters to the field \cite{he2016resnet,redmon2016yolo}. Summarise what earlier studies have done and where they fall short. Name the gap clearly: new data, a new method, or a new context.
+
+State the contribution of this article in one sentence. Finish with a short outline of the remaining sections.
+
+% =====================================================================
+% Methods: takrorlash mumkin bo'ladigan darajada aniq.
+% =====================================================================
+\section{Methods}\label{sec2}
+Describe the data set, its source and size. Describe the proposed method step by step. Give the evaluation metric as a formula, for example the $F_1$ score:
+\begin{equation}
+  F_1 = \frac{2PR}{P+R},
+  \label{eq:f1}
+\end{equation}
+where $P$ is precision and $R$ is recall. Refer to equations as Eq.~(\ref{eq:f1}).
+
+% =====================================================================
+% Results: faqat natijalar, izohsiz.
+% =====================================================================
+\section{Results}\label{sec3}
+Present the results without interpretation. Table~\ref{tab:results} compares the proposed method with the baseline. Replace the placeholders with your own measured values.
+
+\begin{table}[h]
+  \caption{Comparison with the baseline (replace with your results)}
+  \label{tab:results}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    Method &amp; $F_1$ score (\%) &amp; Time (ms) \\
+    \midrule
+    Baseline &amp; XX.X &amp; XX \\
+    Proposed &amp; XX.X &amp; XX \\
+    \botrule
+  \end{tabular}
+\end{table}
+
+% Rasm qo'shish uchun (fayl papkada bo'lishi kerak, masalan fig1.pdf):
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]{fig1.pdf}
+%   \caption{Short, self-explanatory caption.}
+%   \label{fig:overview}
+% \end{figure}
+
+% =====================================================================
+% Discussion: natijalar nimani anglatadi, cheklovlar, boshqa ishlar bilan solishtirish.
+% =====================================================================
+\section{Discussion}\label{sec4}
+Interpret the results. Explain why the proposed method behaves as observed, compare with related work \cite{vaswani2017attention} and state the limitations honestly.
+
+\section{Conclusion}\label{sec5}
+Summarise the findings in two or three sentences and state the future work. Do not repeat the abstract and do not introduce new results.
+
+\bmhead{Acknowledgements}
+Thank the people who supported the work. Write ``None'' if there are none.
+
+% --- Springer ko'pincha quyidagi bandlarni talab qiladi. Jurnal talabiga qarang. ---
+\section*{Declarations}
+\begin{itemize}
+\item Funding: state the funding source or ``No funding''.
+\item Conflict of interest: state or ``The authors declare no competing interests''.
+\item Data availability: where the data can be obtained.
+\item Code availability: where the code can be obtained, if applicable.
+\item Author contributions: who did what.
+\end{itemize}
+
+% --- Adabiyotlar: references.bib faylidan ---
+\bibliography{references}
+
+\end{document}
+</code></pre></details></article>
+  </div>
+  <section class="sec" style="margin-top:32px">
+    <div class="sec-head"><h2>Overleaf'da ochish</h2><p>Eng oson yo'l: kompyuterga hech narsa o'rnatish shart emas.</p></div>
+    <ol class="how">
+      <li>overleaf.com'da bepul hisob oching va New Project, Upload Project tanlang.</li>
+      <li>Yuklab olingan ZIP faylni yuklang. IEEE uchun sinf Overleaf'da tayyor turadi.</li>
+      <li>Recompile tugmasini bosing. Chapdagi <code>main.tex</code> ni o'z matningiz bilan almashtiring.</li>
+    </ol>
+    <p class="note">Springer shabloni uchun <code>sn-jnl.cls</code> Springer Nature'ning rasmiy fayli. Overleaf'da "Springer Nature LaTeX Template" shablonini oching va <code>main.tex</code> mazmunini unga ko'chiring. Yuboriladigan jurnalning "Guide for Authors" sahifasini o'qing: jurnal o'z shablonini bersa, o'shani ishlating.</p>
+    <p class="note">Ikkala shablon ham sinov kompilyatsiyasidan o'tgan. Manbalar ro'yxatidagi yozuvlar namuna, o'zingizniki bilan almashtiring.</p>
+  </section>
+  <div class="soon-row" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted)"><span>Keyinroq qo'shiladi:</span><span class="chip soon">Elsevier</span><span class="chip soon">MDPI</span><span class="chip soon">Word shabloni</span></div>
+</div>
+
+</main>
+<footer class="wrap"><span>Ilmiy Yo'l · 2026</span><span><a href="../../">← Portfolio</a> · <a href="https://t.me/bek92_02" target="_blank" rel="noopener">Telegram</a></span></footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
