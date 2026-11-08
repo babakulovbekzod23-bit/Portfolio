@@ -227,6 +227,8 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .latex { margin-top: 20px; }
 .tnote { margin-top: 16px; color: var(--muted); font-size: .92rem; max-width: 70ch; }
 
+.tcols { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
 /* AI */
 .aigrid { display: grid; gap: 28px; }
 @media (min-width: 820px) { .aigrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } }
@@ -239,6 +241,19 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .prompt pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 500 .92rem/1.6 var(--font-mono); }
 .prompt .actions-row { display: flex; justify-content: flex-start; }
 
+.gr { margin-top: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
+.gr h3 { margin-bottom: 6px; }
+.gr .desc { color: var(--muted); font-size: .95rem; }
+.gr code { font-family: var(--font-mono); font-size: .88em; }
+.ba { display: grid; gap: 12px; margin-block: 16px; }
+@media (min-width: 820px) { .ba { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ba figure { margin: 0; padding: 14px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); min-width: 0; }
+.ba figcaption { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.ba p { font-size: .95rem; line-height: 1.75; }
+.ba del { background: var(--warn-soft); color: var(--ink); text-decoration: line-through; text-decoration-color: var(--warn); }
+.ba ins { background: var(--accent-soft); color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--accent); }
+.gsteps { margin: 0 0 4px; padding-left: 1.25rem; display: grid; gap: 6px; font-size: .95rem; }
+.gr .tnote { margin-top: 12px; }
 .ethics { margin-top: 24px; background: var(--warn-soft); border-radius: 12px; padding: 20px 20px 8px; }
 .ethics h3 { margin-bottom: 12px; color: var(--warn); }
 .ethics ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; padding-bottom: 12px; }
@@ -501,7 +516,7 @@ footer { border-top: 1px solid var(--line); padding-block: 24px 8px; color: var(
       <p>Tayyor shablonda maqola tuzilishi o'z-o'zidan to'g'ri bo'ladi. Har faylda IMRaD bo'limlari o'zbekcha izoh bilan yozilgan.</p>
     </div>
 
-    <div class="cols">
+    <div class="tcols">
       <article class="card tmpl">
         <p class="kicker mono-label">IEEE</p>
         <h3>IEEEtran jurnal shabloni</h3>
@@ -576,6 +591,27 @@ footer { border-top: 1px solid var(--line); padding-block: 24px 8px; color: var(
       <h3>Namuna so'rov (prompt)</h3>
       <pre id="prompt-text">Quyida maqolamning abstracti bor. IMRaD talabi bo'yicha qaysi qism yetishmayapti? Matnni qayta yozma, faqat savol va izoh ber.</pre>
       <div class="actions-row"><button class="btn btn-ghost btn-sm" id="copy-btn" type="button">Nusxalash</button></div>
+    </div>
+
+    <div class="gr">
+      <h3>Grammarly mashqi: oldin va keyin</h3>
+      <p class="desc">Namuna maqola abstractidan uchta jumla. Chiziq tortilgan so'zlar olib tashlandi, ajratilganlari qo'shildi.</p>
+      <div class="ba">
+        <figure lang="en">
+          <figcaption>Oldin</figcaption>
+          <p>The increasing integration of artificial intelligence into education has <del>prompted</del> new opportunities for <del>enhancing</del> learning in technical disciplines. This study explores the role of ChatGPT, a language-based AI model, in teaching <del>the subject of</del> computer networks. <del>Given the complexity of</del> networking topics such as IP addressing, routing, and protocol analysis<del>, the use of</del> AI tools <del>requires</del> careful evaluation.</p>
+        </figure>
+        <figure lang="en">
+          <figcaption>Keyin (tahrir namunasi)</figcaption>
+          <p>The increasing integration of artificial intelligence into education has <ins>created</ins> new opportunities for learning in technical disciplines. This study explores the role of ChatGPT, a language-based AI model, in teaching computer networks. <ins>Because</ins> networking topics such as IP addressing, routing, and protocol analysis <ins>are complex,</ins> AI tools <ins>need</ins> careful evaluation.</p>
+        </figure>
+      </div>
+      <ol class="gsteps">
+        <li>Matnni Overleaf'ga qo'ying, Grammarly kengaytmasi yoqilgan bo'lsin.</li>
+        <li>Takliflarni faqat oddiy matnda ko'ring. <code>\cite{...}</code> kabi LaTeX buyruqlariga tegadigan takliflarni qabul qilmang.</li>
+        <li>Har taklifni o'qib, ma'nosi o'zgarmasligini tekshiring, qabul qiling va Recompile bosing.</li>
+      </ol>
+      <p class="tnote">Grammarly jumlani tuzatadi, lekin manbalardagi xatoni topmaydi. Shu maqolada bitta manbaning yili va jild raqami noto'g'ri yozilgan, yana bittasini topib bo'lmadi. Havolalarni doim o'zingiz tekshiring.</p>
     </div>
 
     <div class="ethics">
