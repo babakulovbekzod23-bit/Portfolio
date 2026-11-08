@@ -1,0 +1,123 @@
+% =====================================================================
+% Springer Nature jurnal maqolasi shabloni (sn-jnl sinfi) - Ilmiy Yo'l
+% Izohlar o'zbek tilida, maqola matni inglizcha yoziladi.
+%
+% DIQQAT: sn-jnl.cls va sn-*.bst fayllari Springer Nature'ning rasmiy
+% fayllari. Ularni shu papkaga qo'ying (Overleaf'dagi "Springer Nature
+% LaTeX Template" ichida tayyor bor) yoki Springer'ning mualliflar
+% sahifasidan oling.
+%
+% Kompilyatsiya: pdflatex -> bibtex -> pdflatex -> pdflatex
+%
+% MUHIM: jurnalning "Instructions for Authors" sahifasini o'qing.
+% Havolalar uslubini sinf parametri belgilaydi (pastda).
+% =====================================================================
+
+% Havolalar uslubi: sn-mathphys-num (raqamli [1]), sn-basic, sn-vancouver,
+% sn-apacite (muallif-yil) va boshqalar. Jurnal talabiga qarab tanlang.
+\documentclass[sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{booktabs}
+
+\raggedbottom
+
+\begin{document}
+
+% --- Sarlavha: aniq, mazmunli, qisqa. Qavs ichida ixcham sarlavha. ---
+\title[Short Title]{Title of Your Article: Specific, Informative and Concise}
+
+% --- Mualliflar: yulduzcha (*) muxbir muallifni bildiradi ---
+\author*[1]{\fnm{First} \sur{Author}}\email{first.author@example.com}
+
+\author[1]{\fnm{Second} \sur{Author}}\email{second.author@example.com}
+
+\author[2]{\fnm{Third} \sur{Author}}\email{third.author@example.com}
+
+\affil*[1]{\orgdiv{Department of Information Technologies}, \orgname{Example University}, \orgaddress{\city{City}, \postcode{100000}, \country{Country}}}
+
+\affil[2]{\orgdiv{Department}, \orgname{Example Institute}, \orgaddress{\city{City}, \postcode{100000}, \country{Country}}}
+
+% --- Abstract: muammo, usul, asosiy natija, xulosa. Bitta xatboshi. ---
+\abstract{State the problem in one sentence. Describe the method you propose or the data you analyse. Report the main quantitative result with a number. End with the practical or scientific significance. Keep the abstract self-contained, without citations. Check the journal's word limit.}
+
+\keywords{keyword one, keyword two, keyword three, keyword four}
+
+\maketitle
+
+% =====================================================================
+% Introduction: muammo, dolzarbligi, oldingi ishlar, research gap, hissa.
+% =====================================================================
+\section{Introduction}\label{sec1}
+State the research problem and why it matters to the field \cite{he2016resnet,redmon2016yolo}. Summarise what earlier studies have done and where they fall short. Name the gap clearly: new data, a new method, or a new context.
+
+State the contribution of this article in one sentence. Finish with a short outline of the remaining sections.
+
+% =====================================================================
+% Methods: takrorlash mumkin bo'ladigan darajada aniq.
+% =====================================================================
+\section{Methods}\label{sec2}
+Describe the data set, its source and size. Describe the proposed method step by step. Give the evaluation metric as a formula, for example the $F_1$ score:
+\begin{equation}
+  F_1 = \frac{2PR}{P+R},
+  \label{eq:f1}
+\end{equation}
+where $P$ is precision and $R$ is recall. Refer to equations as Eq.~(\ref{eq:f1}).
+
+% =====================================================================
+% Results: faqat natijalar, izohsiz.
+% =====================================================================
+\section{Results}\label{sec3}
+Present the results without interpretation. Table~\ref{tab:results} compares the proposed method with the baseline. Replace the placeholders with your own measured values.
+
+\begin{table}[h]
+  \caption{Comparison with the baseline (replace with your results)}
+  \label{tab:results}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    Method & $F_1$ score (\%) & Time (ms) \\
+    \midrule
+    Baseline & XX.X & XX \\
+    Proposed & XX.X & XX \\
+    \botrule
+  \end{tabular}
+\end{table}
+
+% Rasm qo'shish uchun (fayl papkada bo'lishi kerak, masalan fig1.pdf):
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]{fig1.pdf}
+%   \caption{Short, self-explanatory caption.}
+%   \label{fig:overview}
+% \end{figure}
+
+% =====================================================================
+% Discussion: natijalar nimani anglatadi, cheklovlar, boshqa ishlar bilan solishtirish.
+% =====================================================================
+\section{Discussion}\label{sec4}
+Interpret the results. Explain why the proposed method behaves as observed, compare with related work \cite{vaswani2017attention} and state the limitations honestly.
+
+\section{Conclusion}\label{sec5}
+Summarise the findings in two or three sentences and state the future work. Do not repeat the abstract and do not introduce new results.
+
+\bmhead{Acknowledgements}
+Thank the people who supported the work. Write ``None'' if there are none.
+
+% --- Springer ko'pincha quyidagi bandlarni talab qiladi. Jurnal talabiga qarang. ---
+\section*{Declarations}
+\begin{itemize}
+\item Funding: state the funding source or ``No funding''.
+\item Conflict of interest: state or ``The authors declare no competing interests''.
+\item Data availability: where the data can be obtained.
+\item Code availability: where the code can be obtained, if applicable.
+\item Author contributions: who did what.
+\end{itemize}
+
+% --- Adabiyotlar: references.bib faylidan ---
+\bibliography{references}
+
+\end{document}

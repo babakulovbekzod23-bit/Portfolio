@@ -1,0 +1,117 @@
+% =====================================================================
+% IEEE jurnal maqolasi shabloni (IEEEtran sinfi) - Ilmiy Yo'l
+% Izohlar o'zbek tilida, maqola matni inglizcha yoziladi.
+%
+% Kompilyatsiya: pdflatex -> bibtex -> pdflatex -> pdflatex
+% (Overleaf'da "Recompile" tugmasi buni o'zi bajaradi.)
+%
+% MUHIM: yuboriladigan jurnalning "Information for Authors" sahifasini
+% o'qing. Ba'zi jurnallar [journal] o'rniga [conference] yoki boshqa
+% sozlama talab qiladi.
+% =====================================================================
+\documentclass[journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+% --- Sarlavha: aniq, mazmunli, qisqa. Qisqartmalardan qoching. ---
+\title{Title of Your Article: Specific, Informative and Concise}
+
+% --- Mualliflar va ish joyi ---
+\author{First~Author,~\IEEEmembership{Member,~IEEE,}
+        Second~Author,
+        and~Third~Author%
+\thanks{Manuscript received Month DD, 2026; revised Month DD, 2026.}%
+\thanks{First Author and Second Author are with the Department of Information Technologies, Example University, City, Country (e-mail: author@example.com).}%
+\thanks{Third Author is with the Example Institute, City, Country.}}
+
+\markboth{IEEE Journal Name, Vol.~XX, No.~X, Month 2026}%
+{Author \MakeLowercase{\textit{et al.}}: Title of Your Article}
+
+\maketitle
+
+% --- Abstract: muammo, usul, asosiy natija, xulosa. Bitta xatboshi. ---
+\begin{abstract}
+State the problem in one sentence. Describe the method you propose or the data you analyse. Report the main quantitative result, for example the improvement over the baseline, with a number. End with the practical or scientific significance. Keep the abstract self-contained, without citations or abbreviations that are not explained.
+\end{abstract}
+
+\begin{IEEEkeywords}
+keyword one, keyword two, keyword three, keyword four.
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+% =====================================================================
+% I (Introduction): muammo nima, nima uchun muhim, boshqalar nima qilgan,
+% sizning ishingiz nimasi bilan yangi (research gap), maqola tuzilishi.
+% =====================================================================
+\section{Introduction}
+State the research problem and why it matters to the field~\cite{he2016resnet,redmon2016yolo}. Summarise what earlier studies have done and where they fall short. Name the gap clearly: new data, a new method, or a new context.
+
+State the contribution of this article in one sentence, then list the contributions if there are several. Finish with a short outline of the remaining sections.
+
+% =====================================================================
+% M (Methods): boshqa olim ishingizni takrorlay oladigan darajada aniq.
+% =====================================================================
+\section{Methodology}
+Describe the data set, its source, size and how it was collected or prepared. Describe the proposed method step by step. Give the evaluation metric in a formula, for example the $F_1$ score:
+\begin{equation}
+  F_1 = \frac{2PR}{P+R},
+  \label{eq:f1}
+\end{equation}
+where $P$ is precision and $R$ is recall. Refer to equations in the text as~(\ref{eq:f1}).
+
+% =====================================================================
+% R (Results): faqat natijalar, izohsiz. Jadval va rasm matnda tilga olinadi.
+% =====================================================================
+\section{Results}
+Present the results without interpretation. Table~\ref{tab:results} shows the comparison with the baseline. Replace the placeholders with your own measured values.
+
+\begin{table}[!t]
+  \caption{Comparison With the Baseline (Replace With Your Results)}
+  \label{tab:results}
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Method & $F_1$ score (\%) & Time (ms) \\
+    \midrule
+    Baseline & XX.X & XX \\
+    Proposed & XX.X & XX \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% Rasm qo'shish uchun (fayl papkada bo'lishi kerak, masalan fig1.pdf):
+% \begin{figure}[!t]
+%   \centering
+%   \includegraphics[width=\columnwidth]{fig1.pdf}
+%   \caption{Short, self-explanatory caption.}
+%   \label{fig:overview}
+% \end{figure}
+
+% =====================================================================
+% D (Discussion): natijalar nimani anglatadi, cheklovlar, boshqa ishlar bilan solishtirish.
+% =====================================================================
+\section{Discussion}
+Interpret the results. Explain why the proposed method behaves as observed, compare with related work~\cite{vaswani2017attention} and state the limitations honestly.
+
+\section{Conclusion}
+Summarise the findings in two or three sentences and state the future work. Do not repeat the abstract word for word and do not introduce new results.
+
+\section*{Acknowledgment}
+Thank the people and funding sources that supported the work. Write ``None'' if there are none.
+
+% --- Adabiyotlar: references.bib faylidan. Faqat matnda keltirilganlari chiqadi. ---
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

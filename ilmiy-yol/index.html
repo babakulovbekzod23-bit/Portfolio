@@ -221,6 +221,12 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .verdict[data-level="bad"] .vt { color: var(--warn); }
 .soon-row { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--muted); font-size: .95rem; }
 
+/* Templates */
+.tmpl .desc { color: var(--muted); font-size: .95rem; margin-bottom: 12px; }
+.dl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.latex { margin-top: 20px; }
+.tnote { margin-top: 16px; color: var(--muted); font-size: .92rem; max-width: 70ch; }
+
 /* AI */
 .aigrid { display: grid; gap: 28px; }
 @media (min-width: 820px) { .aigrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } }
@@ -263,6 +269,7 @@ footer { border-top: 1px solid var(--line); padding-block: 24px 8px; color: var(
     <a href="#jarayon">Jarayon</a>
     <a href="#kurs">Kurs</a>
     <a href="#vositalar">Vositalar</a>
+    <a href="#shablonlar">Shablonlar</a>
     <a href="#ai-modul">AI va til</a>
     <a href="../">Portfolio</a>
   </nav>
@@ -343,7 +350,7 @@ footer { border-top: 1px solid var(--line); padding-block: 24px 8px; color: var(
           <div>
             <h3>Yozish (IMRaD)</h3>
             <p>Introduction, Methods, Results, Discussion va abstract. Akademik ingliz tili.</p>
-            <div class="chips"><span class="chip dars">Dars</span><span class="chip vosita">Grammarly, Trinka</span><span class="chip soon">IMRaD shabloni</span></div>
+            <div class="chips"><span class="chip dars">Dars</span><span class="chip vosita">Grammarly, Trinka</span><a class="chip vosita" href="#shablonlar">IEEE, Springer shablonlari</a></div>
           </div>
         </li>
         <li class="step">
@@ -481,9 +488,62 @@ footer { border-top: 1px solid var(--line); padding-block: 24px 8px; color: var(
     <div class="soon-row">
       <span>Tayyorlanmoqda:</span>
       <span class="chip soon">Research gap yordamchisi</span>
-      <span class="chip soon">IMRaD shabloni</span>
+      <span class="chip soon">Word shabloni</span>
       <span class="chip soon">Cover letter namunalari</span>
       <span class="chip soon">Atamalar lug'ati</span>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="shablonlar">
+    <div class="sec-head">
+      <p class="eyebrow mono-label">Maqola shablonlari</p>
+      <h2>IEEE va Springer shablonlari, LaTeX bilan</h2>
+      <p>Tayyor shablonda maqola tuzilishi o'z-o'zidan to'g'ri bo'ladi. Har faylda IMRaD bo'limlari o'zbekcha izoh bilan yozilgan.</p>
+    </div>
+
+    <div class="cols">
+      <article class="card tmpl">
+        <p class="kicker mono-label">IEEE</p>
+        <h3>IEEEtran jurnal shabloni</h3>
+        <p class="desc">Texnika, axborot texnologiyalari va telekommunikatsiya jurnallari uchun. Sarlavha, mualliflar, abstract, IMRaD bo'limlari, jadval va formula tayyor.</p>
+        <p class="desc">Overleaf'da ochilganda IEEEtran sinfi tayyor turadi.</p>
+        <div class="dl">
+          <a class="btn btn-primary btn-sm" href="https://github.com/babakulovbekzod23-bit/Portfolio/raw/main/ilmiy-yol/shablonlar/ieee-shablon.zip" target="_blank" rel="noopener">ZIP yuklab olish</a>
+          <a class="btn btn-ghost btn-sm" href="https://github.com/babakulovbekzod23-bit/Portfolio/tree/main/ilmiy-yol/shablonlar/ieee" target="_blank" rel="noopener">Fayllarni ko'rish</a>
+        </div>
+      </article>
+
+      <article class="card tmpl">
+        <p class="kicker mono-label">Springer Nature</p>
+        <h3>sn-jnl jurnal shabloni</h3>
+        <p class="desc">Springer va Nature Portfolio jurnallari uchun. Mualliflar, ish joyi, abstract, IMRaD bo'limlari va Declarations bandlari tayyor.</p>
+        <p class="desc">sn-jnl.cls Springer Nature'ning rasmiy fayli. Uni qayerdan olish README'da yozilgan.</p>
+        <div class="dl">
+          <a class="btn btn-primary btn-sm" href="https://github.com/babakulovbekzod23-bit/Portfolio/raw/main/ilmiy-yol/shablonlar/springer-shablon.zip" target="_blank" rel="noopener">ZIP yuklab olish</a>
+          <a class="btn btn-ghost btn-sm" href="https://github.com/babakulovbekzod23-bit/Portfolio/tree/main/ilmiy-yol/shablonlar/springer" target="_blank" rel="noopener">Fayllarni ko'rish</a>
+        </div>
+      </article>
+    </div>
+
+    <article class="card latex">
+      <p class="kicker mono-label">LaTeX moduli</p>
+      <h3>Kursda nimalar o'rgatiladi</h3>
+      <ol class="lessons">
+        <li>LaTeX nima va nega ko'p jurnallar uni talab qiladi</li>
+        <li>Overleaf'da birinchi maqola va PDF</li>
+        <li>Formula, jadval va rasm</li>
+        <li>Bibliografiya: Zotero'dan BibTeX'ga</li>
+        <li>Jurnal shablonini tanlash va yuborishga tayyorlash</li>
+        <li>O'zbekcha matn: apostrof va kirill harflari</li>
+      </ol>
+    </article>
+
+    <p class="tnote">Ikkala shablon ham sinov kompilyatsiyasidan o'tgan. Yuborishdan oldin jurnalning "Guide for Authors" sahifasini o'qing, jurnal o'z shablonini bersa, o'shani ishlating.</p>
+
+    <div class="soon-row">
+      <span>Keyinroq qo'shiladi:</span>
+      <span class="chip soon">Elsevier</span>
+      <span class="chip soon">MDPI</span>
     </div>
   </section>
 
